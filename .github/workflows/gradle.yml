@@ -61,4 +61,5 @@ jobs:
         script: |
           sudo docker stop ${{ secrets.SERVER_DOCKER_NAME }}
           sudo docker rm ${{ secrets.SERVER_DOCKER_NAME }}
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.repo }}
           sudo docker run -d --name ${{ secrets.SERVER_DOCKER_NAME }} -p ${{ secrets.SERVER_DOCKER_PORT }}:${{ secrets.SERVER_DOCKER_PORT }} ${{ secrets.DOCKER_USERNAME }}/${{ secrets.repo }}
