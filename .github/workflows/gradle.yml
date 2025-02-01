@@ -18,6 +18,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+          working-directory: ./spring
 
     steps:
     - name: checkout
