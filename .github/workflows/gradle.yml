@@ -38,7 +38,7 @@ jobs:
     - name: Download Dockerfile
       run: |
         # jq 명령어를 사용하여 Dockerfile 부분 추출
-        dockerfile_content=$(curl -s https://api.github.com/repos/welcomePlayground/be/contents/Dockerfile | jq -r '.content' | tr -d '"' | base64 -d)
+        dockerfile_content=$(curl -s https://api.github.com/repos/welcomePlayground/be/contents/spring/Dockerfile | jq -r '.content' | tr -d '"' | base64 -d)
         # 추출한 Dockerfile 내용 출력
         echo "$dockerfile_content" > Dockerfile
       working-directory: ${{ env.working-directory }}
