@@ -52,14 +52,14 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.repo }} .
         docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.repo }}
       working-directory: ${{ env.working-directory }}
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.SERVER_USERNAME }}
-        key: ${{ secrets.KEY }}
-        script: |
-          sudo docker stop ${{ secrets.SERVER_DOCKER_NAME }}
-          sudo docker rm ${{ secrets.SERVER_DOCKER_NAME }}
-          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.repo }}
-          sudo docker run -d --name ${{ secrets.SERVER_DOCKER_NAME }} -p ${{ secrets.SERVER_DOCKER_PORT }}:${{ secrets.SERVER_DOCKER_PORT }} ${{ secrets.DOCKER_USERNAME }}/${{ secrets.repo }}
+    #- name: executing remote ssh commands using password
+    #  uses: appleboy/ssh-action@master
+    #  with:
+    #    host: ${{ secrets.HOST }}
+    #    username: ${{ secrets.SERVER_USERNAME }}
+    #    key: ${{ secrets.KEY }}
+    #    script: |
+    #      sudo docker stop ${{ secrets.SERVER_DOCKER_NAME }}
+    #      sudo docker rm ${{ secrets.SERVER_DOCKER_NAME }}
+    #      sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.repo }}
+    #      sudo docker run -d --name ${{ secrets.SERVER_DOCKER_NAME }} -p ${{ secrets.SERVER_DOCKER_PORT }}:${{ secrets.SERVER_DOCKER_PORT }} ${{ secrets.DOCKER_USERNAME }}/${{ secrets.repo }}
